@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<div id="flatten-array"></div>
+
+<script>
+//flatten array
+//input [1, 2, [3, 4], [4, [5]]].
+//output [1,2,3,4,5]
+var flattenArray = (arr) => {
+  var res, i, len;
+  res = [];
+  len = arr.length;
+  
+  for (i = 0; i < len; i++) {
+    if (Array.isArray(arr[i])) {
+      res = res.concat(flattenArray(arr[i]));
+    } else {
+      res.push(arr[i]);
+    }
+  }
+  
+  return res;
+}
+
+var flatArr = flattenArray([1, 2, [3, 4], [4, [5]]]);
+console.log(flattenArray([1, 2, [3, 4], [4, [5]]]));
+
+document.getElementById("flatten-array").innerHTML = flatArr;
+
+</script>
+</body>
+</html>
+
+
+
