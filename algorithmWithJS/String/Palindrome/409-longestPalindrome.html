@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+var isOdd = function(num) {
+    return num % 2 === 0 ? false : true;
+}
+
+var longestPalindrome = function(s) {
+    var strLen, palLen, charObj, i, maxOddCount;
+    strLen = s.length;
+    palLen = 0;
+    charObj = {};
+    maxOddCount = 0;
+    
+    if (!s || strLen === 0) return parLen;
+    
+    for (i = 0; i < strLen; i++) {
+        if (!charObj[s.charAt(i)]) {
+            charObj[s.charAt(i)] = 1;
+        } else {
+            charObj[s.charAt(i)]++;
+        }
+    }
+    console.log(charObj);
+    
+    for (var key in charObj) {     
+        if (isOdd(charObj[key]) ) {
+            palLen += Math.floor(charObj[key] / 2) * 2;
+        } else {
+            palLen += charObj[key];
+        }
+    }
+    return palLen === strLen ? strLen : palLen + 1   
+};
+
+console.log(longestPalindrome('adbddfddafdf'));
+</script>
+</body>
+</html>
