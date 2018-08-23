@@ -26,7 +26,14 @@ var flattenArray = (arr) => {
 }
 
 var flatArr = flattenArray([1, 2, [3, 4], [4, [5]]]);
-console.log(flattenArray([1, 2, [3, 4], [4, [5]]]));
+console.log(flattenArray([[[1, 2, [3, 4], [4, [5]]]]]));
+
+//arrange pins
+
+// var sortPins = function(pins) {
+//   //corner case
+  
+// }
 
 document.getElementById("flatten-array").innerHTML = flatArr;
 
