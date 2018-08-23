@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<div id="high-frequency"></div>
+
+<script>
+//input:
+//string:是一篇小说内容，比如"Jimmy has an apple, it is on the table" 
+//array/list: exclude word list ["an", "a", "is", "the"]，让你给出这个string里出现频率最高的单词
+//output:
+//the word has highest frequency
+var highFrequencyWord = function(s, exclude) {
+  var res = "";
+  if (!s || s.length === 0) {
+    return res;
+  }
+
+  var wordArr = s.trim().split(/\W/).filter((element) => {
+    return element !== "";
+  });
+  ///[^a-zA-Z0-9]
+  console.log("wordArr ", wordArr);
+
+  var map = {};
+  var len = wordArr.length;
+  for (var i = 0; i < len; i++) {
+    if (exclude.indexOf(wordArr[i]) >= 0) {
+      continue;
+    } else {
+      if (!map[wordArr[i]]) {
+        map[wordArr[i]] = 1;
+      } else {
+        map[wordArr[i]]++;
+      }
+    }
+  }
+  var entries = Object.entries(map);
+  entries.sort(function(a, b){
+    return b[1] - a[1];
+  });
+  //decreasing
+  console.log("entries ", entries);
+  res = entries[0][0]
+  return res;
+}
+
+var highestFrequencyWord = highFrequencyWord("Jimmy has an apple 1000 2000 1000 1000, it is on the table, it is not pineapple", ["an", "a", "is", "the"]);
+
+document.getElementById("high-frequency").innerHTML = highestFrequencyWord;
+
+</script>
+</body>
+</html>
+
+
+
