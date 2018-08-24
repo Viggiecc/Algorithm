@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<div id="remove-duplicate"></div>	
+<script type="text/javascript">
+var removeDuplicate = function(s) {
+	var res = "";
+	if (!s || s.length === 0) {
+		return res;
+	}
+	
+	var slow = 0;
+	var fast = 1;
+	while(fast <= s.length) {
+		if (s.charAt(slow) === s.charAt(fast)) {
+			fast++;
+		} else {
+			res += s.charAt(slow);
+			slow = fast;
+			fast = slow + 1;
+		}
+	}
+	return res;
+}
+
+var str = removeDuplicate("adbeeecdee");
+console.log(str);
+document.getElementById("remove-duplicate").innerHTML = str;
+</script>
+</body>
+</html>
